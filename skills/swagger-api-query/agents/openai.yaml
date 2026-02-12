@@ -1,0 +1,4 @@
+interface:
+  display_name: "Swagger API Query"
+  short_description: "Indexed query for large Swagger/OpenAPI JSON docs."
+  default_prompt: "Use $swagger-api-query to locate API endpoints by keyword/tag, then inspect detail/schema with --format json when needed."

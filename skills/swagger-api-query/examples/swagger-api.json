@@ -1,0 +1,309 @@
+﻿{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "API文档",
+    "description": "接口文档描述",
+    "contact": {
+      "name": "技术支持",
+      "email": "huzhihui_c@qq.com"
+    },
+    "license": {
+      "name": "Apache 2.0",
+      "url": "https://www.apache.org/licenses/LICENSE-2.0"
+    },
+    "version": "v1"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8080",
+      "description": "Generated server url"
+    }
+  ],
+  "tags": [
+    {
+      "name": "用户接口",
+      "description": "demo测试app用户接口"
+    },
+    {
+      "name": "首页接口",
+      "description": "demo测试app首页接口"
+    }
+  ],
+  "paths": {
+    "/inter-api/demo-app/user": {
+      "get": {
+        "tags": [
+          "用户接口"
+        ],
+        "summary": "新增列表",
+        "description": "新增列表",
+        "operationId": "list",
+        "parameters": [
+          {
+            "name": "name",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "address",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PageResultUserRes"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "用户接口"
+        ],
+        "summary": "新增用户",
+        "description": "新增用户",
+        "operationId": "add",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserReq"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Result"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/inter-api/demo-app/user/{id}": {
+      "get": {
+        "tags": [
+          "用户接口"
+        ],
+        "summary": "用户详情",
+        "description": "用户详情",
+        "operationId": "details",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PageResultUserRes"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/inter-api/demo-app/home/basic": {
+      "get": {
+        "tags": [
+          "首页接口"
+        ],
+        "summary": "获取首页的基本数据",
+        "description": "获取首页的基本数据",
+        "operationId": "basic",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultHomeInfoRes"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "UserReq": {
+        "type": "object",
+        "description": "用户请求",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "用户名称",
+            "example": "zhangsan"
+          },
+          "address": {
+            "type": "string",
+            "description": "用户地址",
+            "example": "中国"
+          }
+        },
+        "required": [
+          "address",
+          "name"
+        ]
+      },
+      "Result": {
+        "type": "object",
+        "description": "统一响应结果",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "format": "int32",
+            "description": "响应码，200表示成功",
+            "example": 200
+          },
+          "message": {
+            "type": "string",
+            "description": "响应消息",
+            "example": "操作成功"
+          },
+          "data": {
+            "description": "响应数据"
+          },
+          "traceId": {
+            "type": "string",
+            "description": "请求追踪ID",
+            "example": "a1b2c3d4e5f6g7h8"
+          }
+        }
+      },
+      "PageResultUserRes": {
+        "type": "object",
+        "properties": {
+          "total": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "pages": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "current": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "size": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "records": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/UserRes"
+            }
+          }
+        }
+      },
+      "UserRes": {
+        "type": "object",
+        "description": "用户RES",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64",
+            "description": "分类ID",
+            "example": 1
+          },
+          "name": {
+            "type": "string",
+            "description": "用户名称",
+            "example": "zhangsan"
+          },
+          "address": {
+            "type": "string",
+            "description": "用户地址",
+            "example": "中国"
+          },
+          "createdAt": {
+            "type": "string",
+            "description": "创建时间",
+            "example": "2026-02-06 10:30:00"
+          }
+        }
+      },
+      "HomeInfoRes": {
+        "type": "object",
+        "description": "首页信息响应",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "分类名称",
+            "example": 6
+          },
+          "iconUrl": {
+            "type": "string",
+            "description": "图标URL（仅二级分类有值）",
+            "example": "https://example.com/icon.png"
+          },
+          "sortOrder": {
+            "type": "integer",
+            "format": "int32",
+            "description": "排序值",
+            "example": 1
+          }
+        }
+      },
+      "ResultHomeInfoRes": {
+        "type": "object",
+        "description": "统一响应结果",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "format": "int32",
+            "description": "响应码，200表示成功",
+            "example": 200
+          },
+          "message": {
+            "type": "string",
+            "description": "响应消息",
+            "example": "操作成功"
+          },
+          "data": {
+            "$ref": "#/components/schemas/HomeInfoRes",
+            "description": "响应数据"
+          },
+          "traceId": {
+            "type": "string",
+            "description": "请求追踪ID",
+            "example": "a1b2c3d4e5f6g7h8"
+          }
+        }
+      }
+    }
+  }
+}

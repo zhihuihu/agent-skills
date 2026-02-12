@@ -1,0 +1,43 @@
+{
+  "name": "swagger-api-query",
+  "version": "1.0.0",
+  "description": "Query and analyze large Swagger/OpenAPI JSON documents on-demand, avoiding loading the entire spec into context",
+  "keywords": [
+    "swagger",
+    "openapi",
+    "api",
+    "documentation",
+    "query",
+    "search",
+    "agent-skill",
+    "ai-agent",
+    "claude",
+    "skills.sh"
+  ],
+  "author": "zhihuihu",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zhihuihu/agent-skills.git"
+  },
+  "homepage": "https://github.com/zhihuihu/agent-skills#readme",
+  "bugs": {
+    "url": "https://github.com/zhihuihu/agent-skills/issues"
+  },
+  "scripts": {
+    "query": "python scripts/swagger_query.py",
+    "test": "python scripts/swagger_query.py --spec examples/swagger-api.json list-all"
+  },
+  "files": [
+    "SKILL.md",
+    "README.md",
+    "INSTALL.md",
+    "LICENSE",
+    "scripts/",
+    "agents/",
+    "examples/"
+  ],
+  "engines": {
+    "python": ">=3.6"
+  }
+}
