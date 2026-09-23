@@ -1,0 +1,25 @@
+{
+  "name": "java-backend",
+  "version": "1.0.0",
+  "description": "面向 Spring Boot 项目的 Java 后端业务建模与开发技能",
+  "keywords": [
+    "spring-boot",
+    "ddd",
+    "liquibase",
+    "mybatis-plus",
+    "agent-skill"
+  ],
+  "author": "zhihuihu",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zhihuihu/agent-skills.git"
+  },
+  "files": [
+    "SKILL.md",
+    "LICENSE",
+    "agents/",
+    "references/",
+    "examples/"
+  ]
+}

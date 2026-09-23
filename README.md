@@ -16,9 +16,19 @@ npx skills add zhihuihu/agent-skills
 npx skills add zhihuihu/agent-skills --skill openapi-explorer
 ```
 
+只安装 Java Backend：
+
+```bash
+npx skills add zhihuihu/agent-skills --skill java-backend
+```
+
 更多安装方式请参阅[安装指南](INSTALLATION.md)。
 
 ## 可用技能
+
+### java-backend
+
+面向 Spring Boot 项目的 Java 后端开发。简单项目直接在根业务包下按 DDD 分层，复杂项目增加限界上下文层；使用 Liquibase 管理数据库变更，并按需处理 MyBatis-Plus、缓存、消息和外部服务集成。参阅[技能说明](skills/java-backend/SKILL.md)。
 
 ### openapi-explorer
 
@@ -37,6 +47,11 @@ npx skills add zhihuihu/agent-skills --skill openapi-explorer
 
 ```text
 skills/
+  java-backend/
+    SKILL.md
+    agents/openai.yaml
+    examples/
+    references/
   openapi-explorer/
     SKILL.md
     agents/openai.yaml

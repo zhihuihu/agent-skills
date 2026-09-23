@@ -1,0 +1,4 @@
+interface:
+  display_name: "Java 后端开发"
+  short_description: "按业务上下文开发 Spring Boot 服务与中间件集成"
+  default_prompt: "使用 $java-backend 实现这个 Java 后端需求，并遵循项目现有架构与测试约定。"

@@ -14,6 +14,12 @@ npx skills add zhihuihu/agent-skills
 npx skills add zhihuihu/agent-skills --skill openapi-explorer
 ```
 
+只安装 Java Backend：
+
+```bash
+npx skills add zhihuihu/agent-skills --skill java-backend
+```
+
 常用选项：
 
 ```bash
@@ -24,7 +30,7 @@ npx skills add zhihuihu/agent-skills --skill openapi-explorer -y
 
 ## 手动安装
 
-将 `skills/openapi-explorer` 目录复制到 Agent 的技能目录，然后重启 Agent。
+将所需技能目录（`skills/openapi-explorer` 或 `skills/java-backend`）复制到 Agent 的技能目录，然后重启 Agent。
 
 常见的全局目录或工作区目录：
 
@@ -33,7 +39,7 @@ npx skills add zhihuihu/agent-skills --skill openapi-explorer -y
 - Claude Code：`~/.claude/skills/`
 - Cursor：`~/.cursor/skills/`
 
-## 运行要求
+## OpenAPI Explorer 运行要求
 
 - Node.js 18 或更高版本
 
@@ -47,7 +53,7 @@ node scripts/openapi-explorer.mjs --help
 
 仓库开发者修改源码后，可以通过 `npm install && npm run build` 安装构建依赖并重新生成 bundle。
 
-## 验证
+## OpenAPI Explorer 验证
 
 ```bash
 node scripts/openapi-explorer.mjs --help
@@ -60,4 +66,5 @@ npm test
 npx skills check
 npx skills update
 npx skills remove openapi-explorer
+npx skills remove java-backend
 ```
