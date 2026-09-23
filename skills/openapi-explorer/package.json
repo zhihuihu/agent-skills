@@ -1,0 +1,38 @@
+{
+  "name": "openapi-explorer",
+  "version": "1.0.0",
+  "description": "按需查询 Swagger 2.0 与 OpenAPI 3.x JSON/YAML 规范中的接口、参数、响应和 Schema",
+  "keywords": [
+    "swagger",
+    "openapi",
+    "api-specification",
+    "agent-skill"
+  ],
+  "author": "zhihuihu",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zhihuihu/agent-skills.git"
+  },
+  "scripts": {
+    "build": "node build.mjs",
+    "query": "node scripts/openapi-explorer.mjs",
+    "test": "npm run build && node --test tests/*.test.mjs"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "devDependencies": {
+    "esbuild": "0.28.1",
+    "yaml": "2.8.3"
+  },
+  "files": [
+    "SKILL.md",
+    "LICENSE",
+    "THIRD_PARTY_NOTICES.md",
+    "scripts/openapi-explorer.mjs",
+    "references/",
+    "agents/",
+    "examples/"
+  ]
+}

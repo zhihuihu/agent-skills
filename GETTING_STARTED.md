@@ -1,128 +1,47 @@
-# Getting Started
+# 快速开始
 
-## Quick Start
-
-### 1. Install
+## 安装
 
 ```bash
-npx skills add https://github.com/zhihuihu/agent-skills
+npx skills add zhihuihu/agent-skills --skill openapi-explorer
 ```
 
-Or using GitHub shorthand:
+运行环境需要 Node.js 18 或更高版本。发布脚本已经包含 YAML 解析器，不需要安装运行时 npm 依赖。
+
+## 向 Agent 提问
+
+示例：
+
+- “查找 `openapi.yaml` 中创建用户的接口。”
+- “解释 `POST /orders` 的请求体和响应。”
+- “列出这份 Swagger 文档中与认证有关的接口。”
+- “追踪 `OrderResponse` Schema 的字段。”
+- “查看 `https://example.com/openapi.json` 中的接口。”
+
+## 直接运行工具
 
 ```bash
-npx skills add zhihuihu/agent-skills
+node skills/openapi-explorer/scripts/openapi-explorer.mjs --spec ./openapi.yaml info
+node skills/openapi-explorer/scripts/openapi-explorer.mjs --spec ./openapi.yaml tags
+node skills/openapi-explorer/scripts/openapi-explorer.mjs --spec ./openapi.yaml search "创建 用户"
+node skills/openapi-explorer/scripts/openapi-explorer.mjs --spec ./openapi.yaml operation "/users/{id}" get
+node skills/openapi-explorer/scripts/openapi-explorer.mjs --spec ./openapi.yaml schema User
 ```
 
-Or install only the swagger-api-query skill:
+在命令中添加 `--format json`（置于命令前或命令后均可）可获得结构化输出。使用 `--limit` 控制列表数量，使用 `--depth` 控制 Schema 展开深度。可以直接使用仓库内提供的样例测试：`node skills/openapi-explorer/scripts/openapi-explorer.mjs info --spec skills/openapi-explorer/examples/petstore.yaml`。
+
+完整选项请参阅[命令参考](skills/openapi-explorer/references/commands.md)，或运行：
 
 ```bash
-npx skills add zhihuihu/agent-skills --skill swagger-api-query
+node skills/openapi-explorer/scripts/openapi-explorer.mjs --help
 ```
 
-### 2. Use
+## 支持的文档
 
-After installation, your AI agent automatically has access to all skills. No additional configuration needed!
+- Swagger 2.0
+- OpenAPI 3.0 和 3.1
+- JSON 和 YAML
+- 本地文件和 HTTP(S) 地址
+- 内部及相对外部 JSON Pointer 引用
 
-## Using swagger-api-query Skill
-
-### Basic Usage
-
-Simply ask your agent to query API documentation:
-
-```
-"What API endpoints are available in the documentation?"
-"Find all user-related endpoints"
-"Show me the login API details"
-```
-
-### With Custom API Document
-
-If your API document is not named `api-docs.json` or is in a different location:
-
-```
-"Query the API documentation at path/to/my-api.json"
-"Search for upload endpoints in ./docs/api-spec.json"
-```
-
-### Example Queries
-
-**Discovery:**
-- "List all API categories"
-- "What endpoints are available?"
-- "Find all POST endpoints"
-
-**Search:**
-- "Search for user-related APIs"
-- "Find login endpoints"
-- "Show me all upload APIs"
-
-**Details:**
-- "Show me the details of the /api/users endpoint"
-- "What's the request body for creating a user?"
-- "What parameters does the login API accept?"
-
-**Schemas:**
-- "Explain the UserDTO schema"
-- "What fields are in the CreateUserRequest?"
-- "Show me the structure of the API response"
-
-## Testing Locally
-
-You can test the skill's Python script directly:
-
-```bash
-# Navigate to your project
-cd /path/to/your/project
-
-# List all API tags
-python ~/.claude/skills/swagger-api-query/scripts/swagger_query.py list-tags
-
-# Search for endpoints
-python ~/.claude/skills/swagger-api-query/scripts/swagger_query.py search "user"
-
-# Get endpoint details
-python ~/.claude/skills/swagger-api-query/scripts/swagger_query.py detail "/api/users" get
-```
-
-## Requirements
-
-- Python 3.6 or higher
-- An AI agent that supports skills (Claude Code, Codex, Cursor, etc.)
-- OpenAPI/Swagger JSON document
-
-## Troubleshooting
-
-### Skill not found
-
-Make sure you've installed the skills:
-```bash
-npx skills add https://github.com/zhihuihu/agent-skills
-```
-
-Then restart your AI agent.
-
-### Python not found
-
-Install Python 3.6+ and make sure it's in your PATH:
-```bash
-python --version
-```
-
-### API document not found
-
-The skill looks for `api-docs.json` in:
-1. Current directory
-2. Parent directories
-3. Skill directory
-
-You can specify a custom path:
-```
-"Query the API at /path/to/api-docs.json"
-```
-
-## More Information
-
-- [swagger-api-query Documentation](skills/swagger-api-query/README.md)
-- [Installation Guide](skills/swagger-api-query/INSTALL.md)
-- [GitHub Repository](https://github.com/zhihuihu/agent-skills)
+本技能不处理 Postman Collection、GraphQL Schema、AsyncAPI 文档，也不负责实际发送 API 请求。

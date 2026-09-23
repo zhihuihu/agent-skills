@@ -39,7 +39,18 @@ build/
 logs/
 *.log
 
+### Python ###
+__pycache__/
+*.py[cod]
+
+### Node.js ###
+node_modules/
+
 ### Database ###
 /data/
 *.db
 *.trace.db
+
+### OS Files ###
+.DS_Store
+Thumbs.db

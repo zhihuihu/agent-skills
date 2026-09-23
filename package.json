@@ -1,0 +1,18 @@
+{
+  "name": "agent-skills",
+  "version": "1.0.0",
+  "private": true,
+  "description": "遵循 skills.sh 规范的可复用 Agent 技能集合",
+  "scripts": {
+    "test": "npm test --workspaces --if-present",
+    "build": "npm run build --workspaces --if-present"
+  },
+  "workspaces": [
+    "skills/*"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "author": "zhihuihu",
+  "license": "MIT"
+}

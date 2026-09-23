@@ -1,67 +1,52 @@
 # Agent Skills
 
-A collection of reusable AI agent skills following the [skills.sh](https://skills.sh) standard.
+遵循 [skills.sh](https://skills.sh) 规范的可复用 Agent 技能集合。
 
-## Quick Start
+## 安装
 
-```bash
-npx skills add https://github.com/zhihuihu/agent-skills
-```
-
-Or using GitHub shorthand:
+安装仓库中的全部技能：
 
 ```bash
 npx skills add zhihuihu/agent-skills
 ```
 
-That's it! Your AI agent now has access to all skills in this repository.
+只安装 OpenAPI Explorer：
 
-📖 [View Installation Guide](INSTALLATION.md) | 🚀 [Getting Started Guide](GETTING_STARTED.md)
-
-## Available Skills
-
-### 📚 swagger-api-query
-
-Query and analyze large Swagger/OpenAPI JSON documents on-demand, avoiding loading the entire spec into context.
-
-**Features:**
-- 🔍 Search APIs by keyword, tag, or path
-- 📋 List all endpoints with summary information
-- 🎯 Get detailed endpoint information on-demand
-- 📊 View schema definitions separately
-- 💾 Supports JSON output for programmatic use
-
-**Usage:**
-
-After installation, ask your agent:
-- "Find all user-related endpoints in the API documentation"
-- "Show me the login API details"
-- "What's the schema for UserDTO?"
-
-[View detailed documentation →](skills/swagger-api-query/README.md)
-
-## Repository Structure
-
+```bash
+npx skills add zhihuihu/agent-skills --skill openapi-explorer
 ```
+
+更多安装方式请参阅[安装指南](INSTALLATION.md)。
+
+## 可用技能
+
+### openapi-explorer
+
+按需查询 Swagger 2.0 和 OpenAPI 3.x 文档，避免把完整规范一次性放入 Agent 上下文。
+
+- 读取本地文件或 HTTP(S) 地址中的 JSON、YAML 文档。
+- 以自包含 Node.js 单文件运行，无需安装运行时 npm 依赖。
+- 搜索路径、HTTP 方法、摘要、operationId、Tag、参数、请求体和响应。
+- 查看合并后的路径级与操作级参数、请求体、响应、服务器和安全要求。
+- 展开内部及相对外部 JSON Pointer `$ref`，支持循环引用检测和深度限制。
+- 限制宽泛查询的结果数量，再按需查看详情。
+
+请参阅[快速开始](GETTING_STARTED.md)和[技能说明](skills/openapi-explorer/SKILL.md)。
+
+## 仓库结构
+
+```text
 skills/
-  swagger-api-query/          # Swagger/OpenAPI query skill
-    ├── SKILL.md              # Skill definition
-    ├── README.md             # Documentation
-    ├── scripts/              # Python scripts
-    ├── agents/               # Agent configurations
-    └── examples/             # Example files
+  openapi-explorer/
+    SKILL.md
+    agents/openai.yaml
+    examples/petstore.yaml
+    references/commands.md
+    scripts/openapi-explorer.mjs
+    src/openapi-explorer.mjs
+    tests/openapi-explorer.test.mjs
 ```
 
-## Contributing
+## 许可证
 
-Contributions are welcome! Please feel free to submit a Pull Request.
-
-## License
-
-MIT - See individual skill directories for details.
-
-## Links
-
-- [skills.sh Directory](https://skills.sh)
-- [Anthropic Skills Documentation](https://www.anthropic.com/engineering/equipping-agents-for-the-real-world-with-agent-skills)
-- [GitHub Repository](https://github.com/zhihuihu/agent-skills)
+MIT

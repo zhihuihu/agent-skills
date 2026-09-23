@@ -1,0 +1,4 @@
+interface:
+  display_name: "OpenAPI 文档探索器"
+  short_description: "查询 Swagger 和 OpenAPI 接口与数据模型"
+  default_prompt: "使用 $openapi-explorer 查找相关 API 接口，并解释参数、请求体、响应和 Schema。"

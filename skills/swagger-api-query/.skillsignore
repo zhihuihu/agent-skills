@@ -1,7 +1,0 @@
-# Files to exclude when installing this skill
-*.pyc
-__pycache__/
-.DS_Store
-.git/
-.gitignore
-node_modules/
